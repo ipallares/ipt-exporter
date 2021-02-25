@@ -62,6 +62,25 @@ class CV
         return $this->academicExperience->exportExtended();
     }
 
+    public function getPersonalDetails(): PersonalDetails
+    {
+        return $this->personalDetails;
+    }
+
+    public function getCoverLetter(): CoverLetter
+    {
+        return $this->coverLetter;
+    }
+
+    public function getWorkExperiences(): WorkExperiences
+    {
+        return $this->workExperiences;
+    }
+
+    public function getAcademicExperience(): AcademicExperiences
+    {
+        return $this->academicExperience;
+    }
 }
 // IPT: TODO: BilderPattern to instantiate this object
 
