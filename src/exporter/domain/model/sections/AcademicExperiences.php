@@ -51,4 +51,12 @@ class AcademicExperiences implements MultipleContentLengthExportInterface
 
         return $result;
     }
+
+    /**
+     * @return array<int, AcademicExperience>
+     */
+    public function getAcademicExperiences(): array
+    {
+        return $this->academicExperiences;
+    }
 }

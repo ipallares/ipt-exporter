@@ -40,6 +40,26 @@ class AcademicExperience implements MultipleContentLengthExportInterface
             . "</extended-academicexperience>";
     }
 
+    public function getSchoolName(): string
+    {
+        return $this->schoolName;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getDateRange(): DateRange
+    {
+        return $this->dateRange;
+    }
+
+    public function getAdditionalInfo(): string
+    {
+        return $this->additionalInfo;
+    }
+
     private function exportSchoolName(): string
     {
         return "<schoolname>$this->schoolName</schoolname>";

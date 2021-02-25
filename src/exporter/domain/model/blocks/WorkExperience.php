@@ -40,6 +40,26 @@ class WorkExperience implements MultipleContentLengthExportInterface
             . '</extended-workexperience>';
     }
 
+    public function getCompanyName(): string
+    {
+        return $this->companyName;
+    }
+
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
+
+    public function getDateRange(): DateRange
+    {
+        return $this->dateRange;
+    }
+
+    public function getTasksDescription(): string
+    {
+        return $this->tasksDescription;
+    }
+
     private function exportCompanyName()
     {
         return "<companyname>$this->companyName</companyname>";

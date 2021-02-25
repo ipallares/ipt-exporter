@@ -51,6 +51,11 @@ class WorkExperiences
 
         return $result;
     }
+
+    public function getWorkExperiences(): array
+    {
+        return $this->workExperiences;
+    }
 }
 
 // IPT: TODO: Apply Iterator Pattern

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\exporter\domain\model\blocks;
 
-use App\exporter\domain\Exceptions\IniDateAfterEndDateException;
+use App\exporter\domain\exceptions\IniDateAfterEndDateException;
 use DateTime;
 use Exception;
 
@@ -60,6 +60,16 @@ class DateRange
     {
         return '<daterange>' . $this->formatDateTime($this->iniDate) .  ' - '
                     . $this->formatDateTime($this->endDate) . '</daterange>';
+    }
+
+    public function getIniDate(): DateTime
+    {
+        return $this->iniDate;
+    }
+
+    public function getEndDate(): DateTime
+    {
+        return $this->endDate;
     }
 
     private static function getDateTimeFromTimestamp(int $timestamp): DateTime

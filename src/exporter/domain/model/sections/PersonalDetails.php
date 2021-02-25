@@ -65,4 +65,26 @@ class PersonalDetails implements MultipleContentLengthExportInterface
     {
         return $this->phoneNumber->export();
     }
+
+    public function getName(): string
+    {
+        return $this->name->getName();
+    }
+
+    public function getSurname(): string
+    {
+        return $this->surname->getSurname();
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email->getEmail();
+    }
+
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber->getPhoneNumber();
+    }
+
+
 }
