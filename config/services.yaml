@@ -4,12 +4,15 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-
+    cv_schema_v1: '%kernel.project_dir%/src/exporter/application/services/converter/inputJsonSchemaV1/schema/cv-schema-v1.json'
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false
+        bind:
+#            $cvSchemaV1: "%json_to_cv_v1_schema%"
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -20,6 +23,8 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+            - '../src/exporter/domain/exceptions/'
+            - '../src/exporter/domain/model/'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -29,3 +34,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\exporter\application\services\converter\inputJsonSchemaV1\jsonToCvPartConverters\AcademicExperiencesConverter:
+        public: true
+        tags: ['json_to_cv_part_converter']
+
+    JsonSchema\Validator: ~
