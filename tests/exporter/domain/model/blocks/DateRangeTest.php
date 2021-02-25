@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\exporter\domain\model\blocks;
 
-use App\exporter\domain\Exceptions\IniDateAfterEndDateException;
+use App\exporter\domain\exceptions\IniDateAfterEndDateException;
 use App\exporter\domain\model\blocks\DateRange;
 use DateTime;
 use Exception;
