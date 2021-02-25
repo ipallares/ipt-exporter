@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\exporter\domain\services;
 
 use App\exporter\domain\model\sections\AcademicExperiences;
+use App\exporter\domain\model\sections\CoverLetter;
 use App\exporter\domain\model\sections\PersonalDetails;
 use App\exporter\domain\model\sections\WorkExperiences;
 use App\exporter\domain\services\interfaces\ContentLengthTypeExporter;
@@ -17,7 +18,7 @@ class CompressedExporter implements ContentLengthTypeExporter
         return $personalDetails->exportCompressed();
     }
 
-    public function coverLetter(string $coverLetter): string
+    public function coverLetter(CoverLetter $coverLetter): string
     {
         return '';
     }
