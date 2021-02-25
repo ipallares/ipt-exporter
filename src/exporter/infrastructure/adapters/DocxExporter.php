@@ -8,6 +8,8 @@ use App\exporter\domain\ports\DocumentTypeExporterInterface;
 
 class DocxExporter implements DocumentTypeExporterInterface
 {
+    private const SUPPORTED_DOCUMENT_TYPE = 'docx';
+
     public function addTable(string $text): string
     {
         return '' === $text
@@ -27,5 +29,17 @@ class DocxExporter implements DocumentTypeExporterInterface
         return '' === $text
                 ? ''
                 : "<docx-cell>$text</docx-cell>";
+    }
+
+    public function addContent(string $text): string
+    {
+        return '' === $text
+            ? ''
+            : "<docx-content>$text</docx-content>";
+    }
+
+    public function supports(string $documentType): bool
+    {
+        return self::SUPPORTED_DOCUMENT_TYPE === $documentType;
     }
 }

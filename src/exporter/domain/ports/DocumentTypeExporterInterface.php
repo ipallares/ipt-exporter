@@ -11,4 +11,8 @@ interface DocumentTypeExporterInterface
     public function addRow(string $text): string;
 
     public function addCell(string $text): string;
+
+    public function addContent(string $text): string;
+
+    public function supports(string $documentType): bool;
 }

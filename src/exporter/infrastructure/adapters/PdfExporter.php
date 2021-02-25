@@ -8,6 +8,8 @@ use App\exporter\domain\ports\DocumentTypeExporterInterface;
 
 class PdfExporter implements DocumentTypeExporterInterface
 {
+    private const SUPPORTED_DOCUMENT_TYPE = 'pdf';
+
     public function addTable(string $text): string
     {
         return '' === $text
@@ -27,5 +29,17 @@ class PdfExporter implements DocumentTypeExporterInterface
         return '' === $text
                 ? ''
                 : "<pdf-cell>$text</pdf-cell>";
+    }
+
+    public function addContent(string $text): string
+    {
+        return '' === $text
+            ? ''
+            : "<pdf-content>$text</pdf-content>";
+    }
+
+    public function supports(string $documentType): bool
+    {
+        return self::SUPPORTED_DOCUMENT_TYPE === $documentType;
     }
 }
