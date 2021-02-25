@@ -47,6 +47,10 @@ services:
         public: true
         tags: ['json_to_cv_part_converter']
 
+    App\exporter\application\services\converter\inputJsonSchemaV1\jsonToCvPartConverters\WorkExperiencesConverter:
+        public: true
+        tags: ['json_to_cv_part_converter']
+
     App\core\application\services\validators\JsonSchemaValidator:
         public: true
 
