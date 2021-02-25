@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\exporter\domain\Exceptions;
+namespace App\exporter\domain\exceptions;
 
 use RuntimeException;
 
