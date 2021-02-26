@@ -1,0 +1,49 @@
+<pdf-content>
+    <recruiterheader>My Awesome Recruitment Company</recruiterheader>
+</pdf-content>
+<pdf-content>
+    <extended-personaldetails>
+        <name>Max</name>
+        <surname>Mustermann</surname>
+        <email>max@mustermann.com</email>
+        <phonenumber>555-55-55-55</phonenumber>
+    </extended-personaldetails>
+</pdf-content>
+<pdf-content>
+    <coverletter>Lorem ipsum dolor sit amet...</coverletter>
+</pdf-content>
+<pdf-content>
+    <recruiterbanner></recruiterbanner>
+</pdf-content>
+<pdf-content>
+    <extended-workexperiences>
+        <extended-workexperience>
+            <daterange>15-11-2016 - 31-05-2018</daterange>
+            <companyname>My Awesome Company</companyname>
+            <position>Senior developer</position>
+            <taskdescription>Taking care of refactoring the project to clean code and clean architectures.</taskdescription>
+        </extended-workexperience>
+        <extended-workexperience>
+            <daterange>01-08-2014 - 01-10-2018</daterange>
+            <companyname>Another Cool Company</companyname>
+            <position>Senior - intermediate developer</position>
+            <taskdescription>Collaborating with IT Lead to design the project.</taskdescription>
+        </extended-workexperience>
+    </extended-workexperiences>
+</pdf-content>
+<pdf-content>
+    <extended-academicexperiences>
+        <extended-academicexperience>
+            <daterange>01-09-2008 - 30-06-2014</daterange>
+            <schoolname>The IT University</schoolname>
+            <title>Computer Engineer</title>
+            <additionalinfo>Final Career Project on Machine Learning</additionalinfo>
+        </extended-academicexperience>
+        <extended-academicexperience>
+            <daterange>01-09-2006 - 30-06-2008</daterange>
+            <schoolname>The IT Institute</schoolname>
+            <title>Technical Software Developer</title>
+            <additionalinfo>6 months internship at 'Another Cool Company'</additionalinfo>
+        </extended-academicexperience>
+    </extended-academicexperiences>
+</pdf-content>
