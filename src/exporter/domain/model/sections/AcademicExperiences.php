@@ -35,7 +35,7 @@ class AcademicExperiences implements MultipleContentLengthExportInterface
             /** @var AcademicExperiences $academicExperience */
             $result .= $academicExperience->exportCompressed();
         }
-        $result .= '<compressed-academicexperiences>';
+        $result .= '</compressed-academicexperiences>';
 
         return $result;
     }
@@ -47,7 +47,7 @@ class AcademicExperiences implements MultipleContentLengthExportInterface
             /** @var AcademicExperience $academicExperience */
             $result .= $academicExperience->exportExtended();
         }
-        $result .= '<extended-academicexperiences>';
+        $result .= '</extended-academicexperiences>';
 
         return $result;
     }

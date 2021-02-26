@@ -35,7 +35,7 @@ class WorkExperiences
             /** @var WorkExperience $workExperience */
             $result .= $workExperience->exportCompressed();
         }
-        $result .= '<compressed-workexperiences>';
+        $result .= '</compressed-workexperiences>';
 
         return $result;
     }
@@ -47,7 +47,7 @@ class WorkExperiences
             /** @var WorkExperience $workExperience */
             $result .= $workExperience->exportExtended();
         }
-        $result .= '<extended-workexperiences>';
+        $result .= '</extended-workexperiences>';
 
         return $result;
     }
