@@ -76,7 +76,7 @@ class CV
 
     private static function areAllExpectedKeysInArray(array $expectedKeys, array $indexedArray): bool
     {
-        return 0 ===  count(array_diff( $expectedKeys, array_keys($indexedArray)));
+        return 0 <  count(array_diff( $expectedKeys, array_keys($indexedArray)));
     }
 
     public function exportPersonalDetailsCompressed(): string
@@ -101,7 +101,7 @@ class CV
 
     public function exportCoverLetterExtended(): string
     {
-        return $this->coverLetter->export();
+        return $this->coverLetter->exportExtended();
     }
 
     public function exportWorkExperiencesExtended(): string
