@@ -29,11 +29,11 @@ class AcademicExperiencesConverterTest extends KernelTestCase
         $inputJson = file_get_contents('tests/exporter/application/services/converter/inputJsonSchemaV1/input-data/cv-v1.json');
         $jsonObject = json_decode($inputJson);
 
-        $academicExperiences = $this->converter->convert($jsonObject);
-        $this->assertCount(2, $academicExperiences->getAcademicExperiences());
+        $cv = $this->converter->convert($jsonObject);
+        $this->assertCount(2, $cv->getAcademicExperiences());
 
         /** @var AcademicExperience $academicExperience1 */
-        $academicExperience1 = $academicExperiences->getAcademicExperiences()[0];
+        $academicExperience1 = $cv->getAcademicExperiences()[0];
         $expectedAcademicExperience1 = $jsonObject->academicExperiences[0];
         $this->assertEquals($expectedAcademicExperience1->schoolName, $academicExperience1->getSchoolName());
         $this->assertEquals($expectedAcademicExperience1->title, $academicExperience1->getTitle());
@@ -45,7 +45,7 @@ class AcademicExperiencesConverterTest extends KernelTestCase
         $this->assertEquals($dateRange->getEndDate()->format('d-m-Y'), $expectedDateRange->getEndDate()->format('d-m-Y'));
 
         /** @var AcademicExperience $academicExperience2 */
-        $academicExperience2 = $academicExperiences->getAcademicExperiences()[1];
+        $academicExperience2 = $cv->getAcademicExperiences()[1];
         $expectedAcademicExperience2 = $jsonObject->academicExperiences[1];
         $this->assertEquals($expectedAcademicExperience2->schoolName, $academicExperience2->getSchoolName());
         $this->assertEquals($expectedAcademicExperience2->title, $academicExperience2->getTitle());
