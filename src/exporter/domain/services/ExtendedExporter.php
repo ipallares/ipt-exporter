@@ -10,33 +10,32 @@ use App\exporter\domain\model\sections\PersonalDetails;
 use App\exporter\domain\model\sections\WorkExperiences;
 use App\exporter\domain\services\interfaces\ContentLengthTypeExporterInterface;
 
-class CompressedExporter implements ContentLengthTypeExporterInterface
+class ExtendedExporter implements ContentLengthTypeExporterInterface
 {
-
-    public const CONTENT_LENGTH_TYPE_COMPRESSED = 'compressed';
+    public const CONTENT_LENGTH_TYPE_EXTENDED = 'extended';
 
     public function personalDetails(PersonalDetails $personalDetails): string
     {
-        return $personalDetails->exportCompressed();
+        return $personalDetails->exportExtended();
     }
 
     public function coverLetter(CoverLetter $coverLetter): string
     {
-        return '';
+        return $coverLetter->exportExtended();
     }
 
     public function workExperience(WorkExperiences $workExperiences): string
     {
-        return $workExperiences->exportCompressed();
+        return $workExperiences->exportExtended();
     }
 
     public function academicExperience(AcademicExperiences $academicExperiences): string
     {
-        return $academicExperiences->exportCompressed();
+        return $academicExperiences->exportExtended();
     }
 
     public function supports(string $contentLengthType): bool
     {
-        return self::CONTENT_LENGTH_TYPE_COMPRESSED === $contentLengthType;
+        return self::CONTENT_LENGTH_TYPE_EXTENDED === $contentLengthType;
     }
 }

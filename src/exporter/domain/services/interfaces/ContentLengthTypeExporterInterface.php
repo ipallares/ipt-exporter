@@ -9,7 +9,7 @@ use App\exporter\domain\model\sections\CoverLetter;
 use App\exporter\domain\model\sections\PersonalDetails;
 use App\exporter\domain\model\sections\WorkExperiences;
 
-interface ContentLengthTypeExporter
+interface ContentLengthTypeExporterInterface
 {
     public function personalDetails(PersonalDetails $personalDetails): string;
 
@@ -18,4 +18,6 @@ interface ContentLengthTypeExporter
     public function workExperience(WorkExperiences $workExperiences): string;
 
     public function academicExperience(AcademicExperiences $academicExperiences): string;
+
+    public function supports(string $contentLengthType): bool;
 }
