@@ -33,7 +33,7 @@ class AcademicExperiencesTest extends TestCase implements MultipleContentLengthE
      */
     public function testCompressedExport(): void
     {
-        $expectedCompressedAcademicExperiencesExport = '<compressed-academicexperiences><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title></compressed-academicexperience><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title></compressed-academicexperience><compressed-academicexperiences>';
+        $expectedCompressedAcademicExperiencesExport = '<compressed-academicexperiences><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title></compressed-academicexperience><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title></compressed-academicexperience></compressed-academicexperiences>';
         $dateRange = DateRange::fromTimestamps(strtotime("24-02-2020"), strtotime('24-03-2020'));
         $academicExperience1 = new AcademicExperience('school name 1', 'title 1', $dateRange, 'additional info 1');
         $academicExperience2 = new AcademicExperience('school name 2', 'title 2', $dateRange, 'additional info 2');
@@ -49,7 +49,7 @@ class AcademicExperiencesTest extends TestCase implements MultipleContentLengthE
      */
     public function testExtendedExport(): void
     {
-        $expectedExtendedAcademicExperiencesExport = '<extended-academicexperiences><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title><additionalinfo>additional info 1</additionalinfo></extended-academicexperience><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title><additionalinfo>additional info 2</additionalinfo></extended-academicexperience><extended-academicexperiences>';
+        $expectedExtendedAcademicExperiencesExport = '<extended-academicexperiences><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title><additionalinfo>additional info 1</additionalinfo></extended-academicexperience><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title><additionalinfo>additional info 2</additionalinfo></extended-academicexperience></extended-academicexperiences>';
         $dateRange = DateRange::fromTimestamps(strtotime("24-02-2020"), strtotime('24-03-2020'));
         $academicExperience1 = new AcademicExperience('school name 1', 'title 1', $dateRange, 'additional info 1');
         $academicExperience2 = new AcademicExperience('school name 2', 'title 2', $dateRange, 'additional info 2');

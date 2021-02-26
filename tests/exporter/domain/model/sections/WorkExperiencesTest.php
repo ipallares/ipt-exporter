@@ -33,7 +33,7 @@ class WorkExperiencesTest extends TestCase implements MultipleContentLengthExpor
      */
     public function testCompressedExport(): void
     {
-        $expectedCompressedWorkExperiencesExport = '<compressed-workexperiences><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>job position 1</position></compressed-workexperience><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>job position 2</position></compressed-workexperience><compressed-workexperiences>';
+        $expectedCompressedWorkExperiencesExport = '<compressed-workexperiences><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>job position 1</position></compressed-workexperience><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>job position 2</position></compressed-workexperience></compressed-workexperiences>';
         $dateRange = DateRange::fromTimestamps(strtotime("24-02-2020"), strtotime('24-03-2020'));
         $workExperience1 = new WorkExperience('company name 1', 'job position 1', $dateRange, 'task description 1');
         $workExperience2 = new WorkExperience('company name 2', 'job position 2', $dateRange, 'task description 2');
@@ -49,7 +49,7 @@ class WorkExperiencesTest extends TestCase implements MultipleContentLengthExpor
      */
     public function testExtendedExport(): void
     {
-        $expectedExtendedWorkExperiencesExport = '<extended-workexperiences><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>job position 1</position><taskdescription>task description 1</taskdescription></extended-workexperience><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>job position 2</position><taskdescription>task description 2</taskdescription></extended-workexperience><extended-workexperiences>';
+        $expectedExtendedWorkExperiencesExport = '<extended-workexperiences><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>job position 1</position><taskdescription>task description 1</taskdescription></extended-workexperience><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>job position 2</position><taskdescription>task description 2</taskdescription></extended-workexperience></extended-workexperiences>';
         $dateRange = DateRange::fromTimestamps(strtotime("24-02-2020"), strtotime('24-03-2020'));
         $workExperience1 = new WorkExperience('company name 1', 'job position 1', $dateRange, 'task description 1');
         $workExperience2 = new WorkExperience('company name 2', 'job position 2', $dateRange, 'task description 2');

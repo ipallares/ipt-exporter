@@ -66,22 +66,22 @@ class CvTest extends TestCase
         $this->assertEquals($expected, $exported);
 
         // Compressed Work Experiences
-        $expected = '<compressed-workexperiences><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>title 1</position></compressed-workexperience><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>title 2</position></compressed-workexperience><compressed-workexperiences>';
+        $expected = '<compressed-workexperiences><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>title 1</position></compressed-workexperience><compressed-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>title 2</position></compressed-workexperience></compressed-workexperiences>';
         $exported = $cv->exportWorkExperiencesCompressed();
         $this->assertEquals($expected, $exported);
 
         // Extended Work Experiences
-        $expected = '<extended-workexperiences><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>title 1</position><taskdescription>description 1</taskdescription></extended-workexperience><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>title 2</position><taskdescription>description 2</taskdescription></extended-workexperience><extended-workexperiences>';
+        $expected = '<extended-workexperiences><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 1</companyname><position>title 1</position><taskdescription>description 1</taskdescription></extended-workexperience><extended-workexperience><daterange>24-02-2020 - 24-03-2020</daterange><companyname>company name 2</companyname><position>title 2</position><taskdescription>description 2</taskdescription></extended-workexperience></extended-workexperiences>';
         $exported = $cv->exportWorkExperiencesExtended();
         $this->assertEquals($expected, $exported);
 
         // Compressed Academic Experiences
-        $expected = '<compressed-academicexperiences><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title></compressed-academicexperience><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title></compressed-academicexperience><compressed-academicexperiences>';
+        $expected = '<compressed-academicexperiences><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title></compressed-academicexperience><compressed-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title></compressed-academicexperience></compressed-academicexperiences>';
         $exported = $cv->exportAcademicExperiencesCompressed();
         $this->assertEquals($expected, $exported);
 
         // Extended Academic Experiences
-        $expected = '<extended-academicexperiences><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title><additionalinfo>additional info 1</additionalinfo></extended-academicexperience><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title><additionalinfo>additional info 2</additionalinfo></extended-academicexperience><extended-academicexperiences>';
+        $expected = '<extended-academicexperiences><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 1</schoolname><title>title 1</title><additionalinfo>additional info 1</additionalinfo></extended-academicexperience><extended-academicexperience><daterange>24-02-2020 - 24-03-2020</daterange><schoolname>school name 2</schoolname><title>title 2</title><additionalinfo>additional info 2</additionalinfo></extended-academicexperience></extended-academicexperiences>';
         $exported = $cv->exportAcademicExperiencesExtended();
         $this->assertEquals($expected, $exported);
     }
