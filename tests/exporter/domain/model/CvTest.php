@@ -48,7 +48,7 @@ class CvTest extends TestCase
         $academicExperience2 = new AcademicExperience('school name 2', 'title 2', $dateRange, 'additional info 2');
         $academicExperiences = new AcademicExperiences([$academicExperience1, $academicExperience2]);
 
-        $cv = new CV($personalDetails, $coverLetter, $workExperiences, $academicExperiences);
+        $cv = CV::fromValueObjects($personalDetails, $coverLetter, $workExperiences, $academicExperiences);
 
         // Compressed personal details
         $expected = '<compressed-personaldetails><name>Max</name><surname>Mustermann</surname></compressed-personaldetails>';
