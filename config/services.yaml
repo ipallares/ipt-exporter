@@ -65,5 +65,34 @@ services:
         arguments:
             $jsonToCvPartConverters: !tagged { tag: 'json_to_cv_part_converter', index_by: 'key' }
 
+    App\exporter\infrastructure\adapters\DocxExporter:
+        public: true
+        tags: ['document_type_exporter']
+
+    App\exporter\infrastructure\adapters\PdfExporter:
+        public: true
+        tags: ['document_type_exporter']
+
+    App\exporter\domain\services\ExtendedExporter:
+        public: true
+        tags: ['content_length_type_exporter']
+
+    App\exporter\domain\services\CompressedExporter:
+        public: true
+        tags: ['content_length_type_exporter']
+
+
+    App\exporter\application\services\exporter\Exporter:
+        public: true
+        arguments:
+            $documentTypeExporters: !tagged { tag: 'document_type_exporter' }
+            $contentLengthTypeExporters: !tagged { tag: 'content_length_type_exporter' }
+
+    App\exporter\application\services\exporter\LayoutWorkFirstExporter:
+        parent: App\exporter\application\services\exporter\Exporter
+
+    App\exporter\application\services\exporter\LayoutAcademicFirstExporter:
+        parent: App\exporter\application\services\exporter\Exporter
+
 #    App\exporter\application\services\converter\inputJsonSchemaV1:
 #        public: true
