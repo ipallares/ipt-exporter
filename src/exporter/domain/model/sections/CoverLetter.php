@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\exporter\domain\model\sections;
 
-use App\exporter\domain\model\interfaces\SingleContentLengthExportInterface;
+use App\exporter\domain\model\interfaces\MultipleContentLengthExportInterface;
 
-class CoverLetter implements SingleContentLengthExportInterface
+class CoverLetter implements MultipleContentLengthExportInterface
 {
     private string $text;
 
@@ -15,7 +15,7 @@ class CoverLetter implements SingleContentLengthExportInterface
         $this->text = $text;
     }
 
-    public function export(): string
+    public function exportExtended(): string
     {
         return "<coverletter>" . $this->getText() . "</coverletter>";
     }
@@ -23,5 +23,10 @@ class CoverLetter implements SingleContentLengthExportInterface
     public function getText(): string
     {
         return $this->text;
+    }
+
+    public function exportCompressed(): string
+    {
+        return '';
     }
 }
