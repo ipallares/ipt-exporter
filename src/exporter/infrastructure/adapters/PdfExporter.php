@@ -8,7 +8,7 @@ use App\exporter\domain\ports\DocumentTypeExporterInterface;
 
 class PdfExporter implements DocumentTypeExporterInterface
 {
-    private const SUPPORTED_DOCUMENT_TYPE = 'pdf';
+    public const SUPPORTED_DOCUMENT_TYPE = 'pdf';
 
     public function addTable(string $text): string
     {
