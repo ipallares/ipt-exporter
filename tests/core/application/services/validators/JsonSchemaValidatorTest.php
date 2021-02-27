@@ -24,7 +24,7 @@ class JsonSchemaValidatorTest extends KernelTestCase
         $this->validator = self::$kernel->getContainer()->get(JsonSchemaValidator::class);
 
         $this->inputJson = file_get_contents(
-            'tests/exporter/application/services/converter/inputJsonSchemaV1/input-data/cv-v1.json'
+            'tests/exporter/application/services/exporter/input-data/cv1-v1.json'
         );
 
         $this->schemaPath = self::$kernel->getContainer()->getParameter('cv_schema_v1');
