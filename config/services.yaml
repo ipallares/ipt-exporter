@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    cv_schema_v1: '%kernel.project_dir%/src/exporter/application/services/converter/inputJsonSchemaV1/schema/cv-schema-v1.json'
+    cv_schema_v1: '%kernel.project_dir%/src/exporter/application/services/exporter/schemas/cv-schema-v1.json'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -35,36 +35,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\exporter\application\services\converter\inputJsonSchemaV1\jsonToCvPartConverters\AcademicExperiencesConverter:
-        public: true
-        tags:
-            - { name: 'json_to_cv_part_converter', key: 'academicExperiences' }
-
-    App\exporter\application\services\converter\inputJsonSchemaV1\jsonToCvPartConverters\CoverLetterConverter:
-        public: true
-        tags:
-            - { name: 'json_to_cv_part_converter', key: 'coverLetter' }
-
-    App\exporter\application\services\converter\inputJsonSchemaV1\jsonToCvPartConverters\PersonalDetailsConverter:
-        public: true
-        tags:
-            - { name: 'json_to_cv_part_converter', key: 'personalDetails' }
-
-    App\exporter\application\services\converter\inputJsonSchemaV1\jsonToCvPartConverters\WorkExperiencesConverter:
-        public: true
-        tags:
-            - { name: 'json_to_cv_part_converter', key: 'workExperiences' }
-
-    App\core\application\services\validators\JsonSchemaValidator:
-        public: true
-
-    JsonSchema\Validator: ~
-
-    App\exporter\application\services\converter\inputJsonSchemaV1\JsonToCvConverter:
-        public: true
-        arguments:
-            $jsonToCvPartConverters: !tagged { tag: 'json_to_cv_part_converter', index_by: 'key' }
-
     App\exporter\infrastructure\adapters\DocxExporter:
         public: true
         tags: ['document_type_exporter']
@@ -73,26 +43,15 @@ services:
         public: true
         tags: ['document_type_exporter']
 
-    App\exporter\domain\services\ExtendedExporter:
-        public: true
-        tags: ['content_length_type_exporter']
-
-    App\exporter\domain\services\CompressedExporter:
-        public: true
-        tags: ['content_length_type_exporter']
-
-
     App\exporter\application\services\exporter\Exporter:
         public: true
         arguments:
             $documentTypeExporters: !tagged { tag: 'document_type_exporter' }
-            $contentLengthTypeExporters: !tagged { tag: 'content_length_type_exporter' }
 
-    App\exporter\application\services\exporter\LayoutWorkFirstExporter:
-        parent: App\exporter\application\services\exporter\Exporter
+    App\core\application\services\validators\JsonSchemaValidator:
+        public: true
 
-    App\exporter\application\services\exporter\LayoutAcademicFirstExporter:
-        parent: App\exporter\application\services\exporter\Exporter
+    JsonSchema\Validator: ~
 
-#    App\exporter\application\services\converter\inputJsonSchemaV1:
-#        public: true
+    App\exporter\application\services\factory\CompositeExporterFactory:
+        public: true;
