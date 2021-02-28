@@ -98,6 +98,6 @@ class ExporterTest extends KernelTestCase
 
     private function cleanString(string $text): string
     {
-        return str_replace(["\t", "\n", "  "], '', $text);
+        return str_replace(["\t", "\n", "\r", "  "], '', $text);
     }
 }
