@@ -4,45 +4,85 @@ declare(strict_types=1);
 
 namespace App\exporter\application\services\exporter;
 
-use App\exporter\application\services\factory\CompositeExporterFactory;
+use App\core\application\services\validators\JsonSchemaValidator;
+use App\exporter\application\services\exporter\traits\ExportersHelperTrait;
 use App\exporter\domain\ports\DocumentTypeExporterInterface;
-use InvalidArgumentException;
-use Traversable;
+use App\exporter\domain\services\DocumentTypeExporterFinder;
+use Iterator;
 
 abstract class Exporter
 {
-    private CompositeExporterFactory $factory;
+    use ExportersHelperTrait;
 
-    /** @var array<int, DocumentTypeExporterInterface> */
-    private array $documentTypeExporters;
+    private DocumentTypeExporterFinder $documentTypeExporterFinder;
+    private JsonSchemaValidator $schemaValidator;
+    private string $cvSchemaV1;
 
-    /**
-     * @param Traversable<int, DocumentTypeExporterInterface> $documentTypeExporters
-     */
-    public function __construct(CompositeExporterFactory $factory, Traversable $documentTypeExporters)
+    public function __construct(
+        DocumentTypeExporterFinder $documentTypeExporterFinder,
+        JsonSchemaValidator $schemaValidator,
+        string $cvSchemaV1
+    )
     {
-        $this->factory = $factory;
-        $this->documentTypeExporters = iterator_to_array($documentTypeExporters);
+        $this->documentTypeExporterFinder = $documentTypeExporterFinder;
+        $this->schemaValidator = $schemaValidator;
+        $this->cvSchemaV1 = $cvSchemaV1;
     }
 
-    public function export(string $json, string $documentType): string
+    public function export(string $json, string $documentType, string $cvSchemaV1): string
     {
-        // Get the proper Strategy by passing the expected documentType and a 'supports' method implemented by every Strategy.
-        $documentTypeExporter = $this->getDocumentTypeExporter($documentType);
-        $exporter = $this->factory->create($json);
+        // IPT: TODO: Check if here some pattern to chain calls for validation and getDocumentTypExporter
+        $this->schemaValidator->validate($json, $cvSchemaV1);
+        $documentTypeExporter = $this->documentTypeExporterFinder->find($documentType);
 
-        return $exporter->export($documentTypeExporter);
+        $iterator = $this->getIterator($json);
+
+        return $this->doExport($documentTypeExporter, $iterator);
     }
 
-    private function getDocumentTypeExporter(string $documentType): DocumentTypeExporterInterface
-    {
-        foreach($this->documentTypeExporters as $documentTypeExporter) {
-            /** @var DocumentTypeExporterInterface $documentTypeExporter */
-            if ($documentTypeExporter->supports($documentType)) {
-                return $documentTypeExporter;
-            }
+    protected function doExport(
+        DocumentTypeExporterInterface $documentTypeExporter,
+        Iterator $iterator,
+        int $depth = 0
+    ): string {
+
+        $exportedText = '';
+        foreach ($iterator as $tag => $item) {
+            $exportedText .= $this->isCompoundItem($item, $tag)
+                ? $this->getCompoundItemContent($documentTypeExporter, $iterator, $tag, $depth)
+                : $this->getSingleItemContent($documentTypeExporter, $item, $tag);
         }
 
-        throw new InvalidArgumentException("'$documentType' is not supported by any exporter.");
+        return $exportedText;
     }
+
+    /**
+     * @param array | string $item
+     * @param int | string $tag
+     */
+    private function getSingleItemContent(DocumentTypeExporterInterface $documentTypeExporter, $item, $tag): string {
+        $openTag = $this->openTag($tag);
+        $content = $this->getItemStringContent($item);
+        $closeTag = $this->closeTag($tag);
+
+        return $documentTypeExporter->addContent($openTag . $content . $closeTag);
+    }
+
+    /**
+     * @param array | string $tag
+     * @param int | string $tag
+     */
+    protected abstract function isCompoundItem($item, $tag = ''): bool;
+
+    /**
+     * @param int | string $tag
+     */
+    abstract protected function getCompoundItemContent(
+        DocumentTypeExporterInterface $documentTypeExporter,
+        Iterator $iterator,
+        $tag,
+        int $depth = 0
+    ): string;
+
+    abstract protected function getIterator(string $json): Iterator;
 }
