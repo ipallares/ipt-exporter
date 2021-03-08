@@ -47,11 +47,16 @@ services:
         arguments:
             $documentTypeExporters: !tagged { tag: 'document_type_exporter' }
 
+    App\exporter\application\services\exporter\Exporter:
+        abstract: true
+
     App\exporter\application\services\exporter\ExporterWithRecursiveIteratorIterator:
         public: true
+        parent: App\exporter\application\services\exporter\Exporter
 
     App\exporter\application\services\exporter\ExporterWithRecursiveArrayIterator:
         public: true
+        parent: App\exporter\application\services\exporter\Exporter
 
     App\core\application\services\validators\JsonSchemaValidator:
         public: true
