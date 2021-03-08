@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\core\application\services\validators;
 
 use App\core\application\services\validators\JsonSchemaValidator;
-use App\Tests\exporter\application\services\exporter\traits\ExporterHelperTrait;
+use App\Tests\exporter\application\services\exporter\traits\ExportersTestHelperTrait;
 use Exception;
 use JsonSchema\Exception\InvalidSchemaException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class JsonSchemaValidatorTest extends KernelTestCase
 {
-    use ExporterHelperTrait;
+    use ExportersTestHelperTrait;
 
     private string $inputJson;
 
