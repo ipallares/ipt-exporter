@@ -7,12 +7,12 @@ namespace App\Tests\exporter\application\services\exporter;
 use App\exporter\application\services\exporter\ExporterWithRecursiveIteratorIterator;
 use App\exporter\infrastructure\adapters\DocxExporter;
 use App\exporter\infrastructure\adapters\PdfExporter;
-use App\Tests\exporter\application\services\exporter\traits\ExporterHelperTrait;
+use App\Tests\exporter\application\services\exporter\traits\ExportersTestHelperTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class ExporterWithRecursiveIteratorIteratorTest extends KernelTestCase
 {
-    use ExporterHelperTrait;
+    use ExportersTestHelperTrait;
 
     private ExporterWithRecursiveIteratorIterator $exporter;
 
