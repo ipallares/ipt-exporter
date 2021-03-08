@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\exporter\application\services\exporter;
 
 use App\core\application\services\validators\JsonSchemaValidator;
+use App\exporter\application\services\exporter\traits\ExportersHelperTrait;
 use App\exporter\domain\ports\DocumentTypeExporterInterface;
 use App\exporter\domain\services\DocumentTypeExporterFinder;
 use RecursiveArrayIterator;
@@ -12,6 +13,8 @@ use RecursiveIteratorIterator;
 
 class ExporterWithRecursiveIteratorIterator
 {
+    use ExportersHelperTrait;
+
     private DocumentTypeExporterFinder $documentTypeExporterFinder;
     private JsonSchemaValidator $schemaValidator;
     private string $cvSchemaV1;
@@ -39,10 +42,10 @@ class ExporterWithRecursiveIteratorIterator
             RecursiveIteratorIterator::SELF_FIRST
         );
 
-        return $this->exportRecursive($documentTypeExporter, $iterator);
+        return $this->doExport($documentTypeExporter, $iterator);
     }
 
-    private function exportRecursive(
+    private function doExport(
         DocumentTypeExporterInterface $documentTypeExporter,
         RecursiveIteratorIterator $iterator
     ): string {
@@ -88,30 +91,5 @@ class ExporterWithRecursiveIteratorIterator
         return $documentTypeExporter->addContent($openTag . $content . $closeTag);
     }
 
-    private function getItemStringContent($item): string {
-        return is_string($item) ?  $item . PHP_EOL : '';
-    }
 
-    private function openTag($tag): string
-    {
-        if ($this->isValidTag($tag)) {
-            return "<$tag>" . PHP_EOL;
-        }
-
-        return '';
-    }
-
-    private function closeTag($tag): string
-    {
-        if ($this->isValidTag($tag)) {
-            return "</$tag>" . PHP_EOL;
-        }
-
-        return '';
-    }
-
-    private function isValidTag($tag): bool
-    {
-        return is_string($tag) && '' !== $tag;
-    }
 }
