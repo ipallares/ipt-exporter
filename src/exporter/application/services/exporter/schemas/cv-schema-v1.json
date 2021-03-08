@@ -64,32 +64,45 @@
                         "$id": "#/properties/workExperiences/items/anyOf/0",
                         "type": "object",
                         "required": [
-                            "companyName",
-                            "position",
-                            "startDate",
-                            "endDate",
-                            "description"
+                            "workExperience"
                         ],
                         "properties": {
-                            "companyName": {
-                                "$id": "#/properties/workExperiences/items/anyOf/0/properties/companyName",
-                                "type": "string"
-                            },
-                            "position": {
-                                "$id": "#/properties/workExperiences/items/anyOf/0/properties/position",
-                                "type": "string"
-                            },
-                            "startDate": {
-                                "$id": "#/properties/workExperiences/items/anyOf/0/properties/startDate",
-                                "type": "string"
-                            },
-                            "endDate": {
-                                "$id": "#/properties/workExperiences/items/anyOf/0/properties/endDate",
-                                "type": "string"
-                            },
-                            "description": {
-                                "$id": "#/properties/workExperiences/items/anyOf/0/properties/description",
-                                "type": "string"
+                            "workExperience": {
+                                "$id": "#/properties/workExperiences/items/anyOf/0/properties/workExperience",
+                                "type": "object",
+                                "required": [
+                                    "companyName",
+                                    "position",
+                                    "startDate",
+                                    "endDate",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "companyName": {
+                                        "$id": "#/properties/workExperiences/items/anyOf/0/properties/workExperience/properties/companyName",
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "$id": "#/properties/workExperiences/items/anyOf/0/properties/workExperience/properties/position",
+                                        "type": "string"
+                                    },
+                                    "startDate": {
+                                        "$id": "#/properties/workExperiences/items/anyOf/0/properties/workExperience/properties/startDate",
+                                        "type": "string",
+                                        "format": "date"
+
+                                    },
+                                    "endDate": {
+                                        "$id": "#/properties/workExperiences/items/anyOf/0/properties/workExperience/properties/endDate",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "description": {
+                                        "$id": "#/properties/workExperiences/items/anyOf/0/properties/workExperience/properties/description",
+                                        "type": "string"
+                                    }
+                                },
+                                "additionalProperties": true
                             }
                         },
                         "additionalProperties": true
@@ -108,32 +121,44 @@
                         "$id": "#/properties/academicExperiences/items/anyOf/0",
                         "type": "object",
                         "required": [
-                            "schoolName",
-                            "title",
-                            "startDate",
-                            "endDate",
-                            "description"
+                            "academicExperience"
                         ],
                         "properties": {
-                            "schoolName": {
-                                "$id": "#/properties/academicExperiences/items/anyOf/0/properties/schoolName",
-                                "type": "string"
-                            },
-                            "title": {
-                                "$id": "#/properties/academicExperiences/items/anyOf/0/properties/title",
-                                "type": "string"
-                            },
-                            "startDate": {
-                                "$id": "#/properties/academicExperiences/items/anyOf/0/properties/startDate",
-                                "type": "string"
-                            },
-                            "endDate": {
-                                "$id": "#/properties/academicExperiences/items/anyOf/0/properties/endDate",
-                                "type": "string"
-                            },
-                            "description": {
-                                "$id": "#/properties/academicExperiences/items/anyOf/0/properties/description",
-                                "type": "string"
+                            "academicExperience": {
+                                "$id": "#/properties/academicExperiences/items/anyOf/0/properties/academicExperience",
+                                "type": "object",
+                                "required": [
+                                    "schoolName",
+                                    "title",
+                                    "startDate",
+                                    "endDate",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "schoolName": {
+                                        "$id": "#/properties/academicExperiences/items/anyOf/0/properties/academicExperience/properties/schoolName",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "$id": "#/properties/academicExperiences/items/anyOf/0/properties/academicExperience/properties/title",
+                                        "type": "string"
+                                    },
+                                    "startDate": {
+                                        "$id": "#/properties/academicExperiences/items/anyOf/0/properties/academicExperience/properties/startDate",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "endDate": {
+                                        "$id": "#/properties/academicExperiences/items/anyOf/0/properties/academicExperience/properties/endDate",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "description": {
+                                        "$id": "#/properties/academicExperiences/items/anyOf/0/properties/academicExperience/properties/description",
+                                        "type": "string"
+                                    }
+                                },
+                                "additionalProperties": true
                             }
                         },
                         "additionalProperties": true
