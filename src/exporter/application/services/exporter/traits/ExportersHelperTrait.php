@@ -4,7 +4,7 @@ namespace App\exporter\application\services\exporter\traits;
 
 trait ExportersHelperTrait
 {
-    private function openTag($tag): string
+    protected function openTag($tag): string
     {
         if ($this->isValidTag($tag)) {
             return "<$tag>" . PHP_EOL;
@@ -13,7 +13,7 @@ trait ExportersHelperTrait
         return '';
     }
 
-    private function closeTag($tag): string
+    protected function closeTag($tag): string
     {
         if ($this->isValidTag($tag)) {
             return "</$tag>" . PHP_EOL;
@@ -22,12 +22,12 @@ trait ExportersHelperTrait
         return '';
     }
 
-    private function isValidTag($tag): bool
+    protected function isValidTag($tag): bool
     {
         return is_string($tag) && '' !== $tag;
     }
 
-    private function getItemStringContent($item): string {
+    protected function getItemStringContent($item): string {
         return is_string($item) ?  $item . PHP_EOL : '';
     }
 }
