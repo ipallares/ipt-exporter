@@ -21,28 +21,28 @@ trait ExporterHelperTrait
 
     private function getExpected_Word_cv1_v1(): string
     {
-        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/recursive-iterator-iterator/docx-cv1-v1.xml');
+        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/docx-cv1-v1.xml');
 
         return $this->cleanString($expected);
     }
 
     private function getExpected_Word_cv2_v1(): string
     {
-        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/recursive-iterator-iterator/docx-cv2-v1.xml');
+        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/docx-cv2-v1.xml');
 
         return $this->cleanString($expected);
     }
 
     private function getExpected_Pdf_cv1_v1(): string
     {
-        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/recursive-iterator-iterator/pdf-cv1-v1.xml');
+        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/pdf-cv1-v1.xml');
 
         return $this->cleanString($expected);
     }
 
     private function getExpected_Pdf_cv2_v1(): string
     {
-        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/recursive-iterator-iterator/pdf-cv2-v1.xml');
+        $expected = file_get_contents('tests/exporter/application/services/exporter/expected-documents/pdf-cv2-v1.xml');
 
         return $this->cleanString($expected);
     }
