@@ -50,6 +50,9 @@ services:
     App\exporter\application\services\exporter\ExporterWithRecursiveIteratorIterator:
         public: true
 
+    App\exporter\application\services\exporter\ExporterWithRecursiveArrayIterator:
+        public: true
+
     App\core\application\services\validators\JsonSchemaValidator:
         public: true
 
