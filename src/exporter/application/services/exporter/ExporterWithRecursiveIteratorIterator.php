@@ -6,35 +6,24 @@ namespace App\exporter\application\services\exporter;
 
 use App\core\application\services\validators\JsonSchemaValidator;
 use App\exporter\domain\ports\DocumentTypeExporterInterface;
-use InvalidArgumentException;
+use App\exporter\domain\services\DocumentTypeExporterFinder;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
-use SplStack;
-use Traversable;
 
 class ExporterWithRecursiveIteratorIterator
 {
+    private DocumentTypeExporterFinder $documentTypeExporterFinder;
     private JsonSchemaValidator $schemaValidator;
-
-    /** @var Traversable<int, DocumentTypeExporterInterface> */
-    private Traversable $documentTypeExporters;
-
     private string $cvSchemaV1;
 
-    private SplStack $closingTagsStack;
-
-    /**
-     * @param Traversable<int, DocumentTypeExporterInterface> $documentTypeExporters
-     */
     public function __construct(
+        DocumentTypeExporterFinder $documentTypeExporterFinder,
         JsonSchemaValidator $schemaValidator,
-        Traversable $documentTypeExporters,
         string $cvSchemaV1
     )
     {
-        $this->closingTagsStack = new SplStack();
+        $this->documentTypeExporterFinder = $documentTypeExporterFinder;
         $this->schemaValidator = $schemaValidator;
-        $this->documentTypeExporters = $documentTypeExporters;
         $this->cvSchemaV1 = $cvSchemaV1;
     }
 
@@ -43,7 +32,7 @@ class ExporterWithRecursiveIteratorIterator
         // IPT: TODO: Check if here some pattern to chain calls for validation and getDocumentTypExporter
         $this->schemaValidator->validate($json, $cvSchemaV1);
         // Get the proper Strategy by passing the expected documentType and a 'supports' method implemented by every Strategy.
-        $documentTypeExporter = $this->getDocumentTypeExporter($documentType);
+        $documentTypeExporter = $this->documentTypeExporterFinder->find($documentType);
 
         $iterator = new RecursiveIteratorIterator(
             new RecursiveArrayIterator(json_decode($json, true)),
@@ -73,6 +62,9 @@ class ExporterWithRecursiveIteratorIterator
         return !is_string($item) && $this->isValidTag($tag);
     }
 
+    /**
+     * @param int | string $tag
+     */
     private function getCompoundItemContent(
         DocumentTypeExporterInterface $documentTypeExporter,
         RecursiveIteratorIterator $iterator,
@@ -84,28 +76,20 @@ class ExporterWithRecursiveIteratorIterator
         return  $documentTypeExporter->addContent("<$headerTag>$tag</$headerTag>");
     }
 
+    /**
+     * @param array | string $item
+     * @param int | string $tag
+     */
     private function getSingleItemContent(DocumentTypeExporterInterface $documentTypeExporter, $item, $tag): string {
         $openTag = $this->openTag($tag);
-        $content = $this->getItemContent($item);
+        $content = $this->getItemStringContent($item);
         $closeTag = $this->closeTag($tag);
 
         return $documentTypeExporter->addContent($openTag . $content . $closeTag);
     }
 
-    private function getItemContent($item): string {
-        return is_string($item) ?  $this->getItemString($item) : '';
-    }
-
-    private function getDocumentTypeExporter(string $documentType): DocumentTypeExporterInterface
-    {
-        foreach($this->documentTypeExporters as $documentTypeExporter) {
-            /** @var DocumentTypeExporterInterface $documentTypeExporter */
-            if ($documentTypeExporter->supports($documentType)) {
-                return $documentTypeExporter;
-            }
-        }
-
-        throw new InvalidArgumentException("'$documentType' is not supported by any exporter.");
+    private function getItemStringContent($item): string {
+        return is_string($item) ?  $item . PHP_EOL : '';
     }
 
     private function openTag($tag): string
@@ -129,10 +113,5 @@ class ExporterWithRecursiveIteratorIterator
     private function isValidTag($tag): bool
     {
         return is_string($tag) && '' !== $tag;
-    }
-
-    private function getItemString(string $text): string
-    {
-        return $text . PHP_EOL;
     }
 }
