@@ -58,6 +58,10 @@ services:
         public: true
         parent: App\exporter\application\services\exporter\Exporter
 
+    App\exporter\application\services\exporter\ExporterWithTreePreOrderIterator:
+        public: true
+        parent: App\exporter\application\services\exporter\Exporter
+
     App\core\application\services\validators\JsonSchemaValidator:
         public: true
 
