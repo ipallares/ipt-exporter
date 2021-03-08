@@ -1,107 +1,99 @@
 <pdf-content>
-    <CV>
-        <pdf-content>
-            <workExperiences>
-                <pdf-content>
-                    <section-block>
-                        <pdf-content>
-                            <companyName>My Awesome Company</companyName>
-                        </pdf-content>
-                        <pdf-content>
-                            <position>Senior developer</position>
-                        </pdf-content>
-                        <pdf-content>
-                            <startDate>2016-11-15</startDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <endDate>2018-05-31</endDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <description>Taking care of refactoring the project to clean code and clean architectures.</description>
-                        </pdf-content>
-                    </section-block>
-                </pdf-content>
-                <pdf-content>
-                    <section-block>
-                        <pdf-content>
-                            <companyName>Another Cool Company</companyName>
-                        </pdf-content>
-                        <pdf-content>
-                            <position>Senior - intermediate developer</position>
-                        </pdf-content>
-                        <pdf-content>
-                            <startDate>2014-08-01</startDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <endDate>2018-10-01</endDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <description>Collaborating with IT Lead to design the project.</description>
-                        </pdf-content>
-                    </section-block>
-                </pdf-content>
-            </workExperiences>
-        </pdf-content>
-        <pdf-content>
-            <personalDetails>
-                <pdf-content>
-                    <name>Max</name>
-                </pdf-content>
-                <pdf-content>
-                    <surname>Mustermann</surname>
-                </pdf-content>
-                <pdf-content>
-                    <email>max@mustermann.com</email>
-                </pdf-content>
-                <pdf-content>
-                    <phoneNumber>555-55-55-55</phoneNumber>
-                </pdf-content>
-            </personalDetails>
-        </pdf-content>
-        <pdf-content>
-            <academicExperiences>
-                <pdf-content>
-                    <section-block>
-                        <pdf-content>
-                            <schoolName>The IT University</schoolName>
-                        </pdf-content>
-                        <pdf-content><title>Computer Engineer</title></pdf-content>
-                        <pdf-content>
-                            <startDate>2008-09-01</startDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <endDate>2014-06-30</endDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <description>Final Career Project on Machine Learning</description>
-                        </pdf-content>
-                    </section-block>
-                </pdf-content>
-                <pdf-content>
-                    <section-block>
-                        <pdf-content>
-                            <schoolName>The IT Institute</schoolName>
-                        </pdf-content>
-                        <pdf-content><title>Technical Software Developer</title></pdf-content>
-                        <pdf-content>
-                            <startDate>2006-09-01</startDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <endDate>2008-06-30</endDate>
-                        </pdf-content>
-                        <pdf-content>
-                            <description>6 months internship at 'Another Cool Company'</description>
-                        </pdf-content>
-                    </section-block>
-                </pdf-content>
-            </academicExperiences>
-        </pdf-content>
-        <pdf-content>
-            <coverLetter>
-                <pdf-content>
-                    <text>Lorem ipsum dolor sit amet...</text>
-                </pdf-content>
-            </coverLetter>
-        </pdf-content>
-    </CV>
+    <section>workExperiences</section>
 </pdf-content>
+    <pdf-content>
+        <block>workExperience</block>
+    </pdf-content>
+        <pdf-content>
+            <companyName>My Awesome Company</companyName>
+        </pdf-content>
+        <pdf-content>
+            <position>Senior developer</position>
+        </pdf-content>
+        <pdf-content>
+            <startDate>2016-11-15</startDate>
+        </pdf-content>
+        <pdf-content>
+            <endDate>2018-05-31</endDate>
+        </pdf-content>
+        <pdf-content>
+            <description>Taking care of refactoring the project to clean code and clean architectures.</description>
+        </pdf-content>
+    <pdf-content>
+        <block>workExperience</block>
+    </pdf-content>
+        <pdf-content>
+            <companyName>Another Cool Company</companyName>
+        </pdf-content>
+        <pdf-content>
+            <position>Senior - intermediate developer</position>
+        </pdf-content>
+        <pdf-content>
+            <startDate>2014-08-01</startDate>
+        </pdf-content>
+        <pdf-content>
+            <endDate>2018-10-01</endDate>
+        </pdf-content>
+        <pdf-content>
+            <description>Collaborating with IT Lead to design the project.</description>
+        </pdf-content>
+<pdf-content>
+    <section>personalDetails</section>
+</pdf-content>
+    <pdf-content>
+        <name>Max</name>
+    </pdf-content>
+    <pdf-content>
+        <surname>Mustermann</surname>
+    </pdf-content>
+    <pdf-content>
+        <email>max@mustermann.com</email>
+    </pdf-content>
+    <pdf-content>
+        <phoneNumber>555-55-55-55</phoneNumber>
+    </pdf-content>
+<pdf-content>
+    <section>academicExperiences</section>
+</pdf-content>
+    <pdf-content>
+        <block>academicExperience</block>
+    </pdf-content>
+        <pdf-content>
+            <schoolName>The IT University</schoolName>
+        </pdf-content>
+        <pdf-content>
+            <title>Computer Engineer</title>
+        </pdf-content>
+            <pdf-content>
+        <startDate>2008-09-01</startDate>
+            </pdf-content>
+        <pdf-content>
+            <endDate>2014-06-30</endDate>
+        </pdf-content>
+        <pdf-content>
+            <description>Final Career Project on Machine Learning</description>
+        </pdf-content>
+    <pdf-content>
+        <block>academicExperience</block>
+    </pdf-content>
+        <pdf-content>
+            <schoolName>The IT Institute</schoolName>
+        </pdf-content>
+        <pdf-content>
+            <title>Technical Software Developer</title>
+        </pdf-content>
+        <pdf-content>
+            <startDate>2006-09-01</startDate>
+        </pdf-content>
+        <pdf-content>
+            <endDate>2008-06-30</endDate>
+        </pdf-content>
+        <pdf-content>
+            <description>6 months internship at 'Another Cool Company'</description>
+        </pdf-content>
+<pdf-content>
+    <section>coverLetter</section>
+</pdf-content>
+    <pdf-content>
+        <text>Lorem ipsum dolor sit amet...</text>
+    </pdf-content>
