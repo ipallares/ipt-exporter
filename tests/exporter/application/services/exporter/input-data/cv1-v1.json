@@ -10,34 +10,42 @@
     },
     "workExperiences": [
         {
-            "companyName": "My Awesome Company",
-            "position": "Senior developer",
-            "startDate": "2016-11-15",
-            "endDate": "2018-05-31",
-            "description": "Taking care of refactoring the project to clean code and clean architectures."
+            "workExperience": {
+                "companyName": "My Awesome Company",
+                "position": "Senior developer",
+                "startDate": "2016-11-15",
+                "endDate": "2018-05-31",
+                "description": "Taking care of refactoring the project to clean code and clean architectures."
+            }
         },
         {
-            "companyName": "Another Cool Company",
-            "position": "Senior - intermediate developer",
-            "startDate": "2014-08-01",
-            "endDate": "2018-10-01",
-            "description": "Collaborating with IT Lead to design the project."
+            "workExperience": {
+                "companyName": "Another Cool Company",
+                "position": "Senior - intermediate developer",
+                "startDate": "2014-08-01",
+                "endDate": "2018-10-01",
+                "description": "Collaborating with IT Lead to design the project."
+            }
         }
     ],
     "academicExperiences": [
         {
-            "schoolName": "The IT University",
-            "title": "Computer Engineer",
-            "startDate": "2008-09-01",
-            "endDate": "2014-06-30",
-            "description": "Final Career Project on Machine Learning"
+            "academicExperience": {
+                "schoolName": "The IT University",
+                "title": "Computer Engineer",
+                "startDate": "2008-09-01",
+                "endDate": "2014-06-30",
+                "description": "Final Career Project on Machine Learning"
+            }
         },
         {
-            "schoolName": "The IT Institute",
-            "title": "Technical Software Developer",
-            "startDate": "2006-09-01",
-            "endDate": "2008-06-30",
-            "description": "6 months internship at 'Another Cool Company'"
+            "academicExperience": {
+                "schoolName": "The IT Institute",
+                "title": "Technical Software Developer",
+                "startDate": "2006-09-01",
+                "endDate": "2008-06-30",
+                "description": "6 months internship at 'Another Cool Company'"
+            }
         }
     ]
 }
