@@ -43,7 +43,7 @@ services:
         public: true
         tags: ['document_type_exporter']
 
-    App\exporter\application\services\exporter\Exporter:
+    App\exporter\application\services\exporter\ExporterWithRecursiveIteratorIterator:
         public: true
         arguments:
             $documentTypeExporters: !tagged { tag: 'document_type_exporter' }
@@ -53,5 +53,4 @@ services:
 
     JsonSchema\Validator: ~
 
-    App\exporter\application\services\factory\CompositeExporterFactory:
-        public: true;
+
