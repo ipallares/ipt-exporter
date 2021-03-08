@@ -2,7 +2,7 @@
 
 namespace App\Tests\exporter\application\services\exporter\traits;
 
-trait ExporterHelperTrait
+trait ExportersTestHelperTrait
 {
     private function getInputJson_cv1(): string
     {
